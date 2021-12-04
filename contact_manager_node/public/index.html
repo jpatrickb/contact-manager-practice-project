@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact Manager</title>
+    <link rel="stylesheet" href="stylesheets/index.css">
+    <script src="javascripts/jquery.js"></script>
+    <script src="javascripts/handlebars.js"></script>
+    <script src="javascripts/index.js"></script>
+  </head>
+  
+  <body>
+    <header>
+      <h1>Contact Manager</h1>
+      <p>Using jQuery, Vanilla JavaScript, Node, and Handlebars</p>
+    </header>
+    
+    <div id="header">
+      <button id="add">Add Contact</button>
+      <button id="all-contacts">Display/Hide Contacts</button>
+      <button id="search-button">Filter Contacts</button>
+      <form id="search">
+        <label for="search">Filter By Name:</label>
+        <input type="text" id="search-input" name="search"/>
+        <label for="tag-search"  name="tag-search">Filter By Tag:</label>
+        <select id="tag-search">
+          <option>None</option>
+          <option>Marketing</option>
+          <option>Engineering</option>
+          <option>Farming</option>
+          <option>Family</option>
+          <option>Friends</option>
+          <option>Yoga</option>
+        </select>
+      </form>
+    </div>
+   
+    <div id="create-contact" hidden>
+      <h1>Create Contact</h1>
+      <form id="contact-form">
+        <div>
+          <label for="name">Full name:</label>
+          <input type="text" id="name" name="name">
+        </div>
+        <div>
+          <label for="email">Email address:</label>
+          <input type="email" id="email" name="email">
+        </div>
+        <div>
+          <label for="phone-number">Telephone number:</label>
+          <input type="text" id="phone-number" name="phone-number">
+        </div>
+        <div>
+          <label for="tag">Tag:</label>
+          <select id="create-tag">
+            <option>None</option>
+            <option>Marketing</option>
+            <option>Engineering</option>
+            <option>Farming</option>
+            <option>Family</option>
+            <option>Friends</option>
+            <option>Yoga</option>
+          </select>
+        </div>
+        <div>
+          <input type="submit" value="Add Contact">
+        </div>
+      </form>
+    </div>
+
+    <div id="update" data-id="" hidden>
+      <h1>Update Contact</h1>
+      <form id="update-contact-form">
+        <div>
+          <label for="name">Full name:</label>
+          <input type="text" id="update-name" name="name">
+        </div>
+        <div>
+          <label for="email">Email address:</label>
+          <input type="email" id="update-email" name="email">
+        </div>
+        <div>
+          <label for="phone-number">Telephone number:</label>
+          <input type="text" id="update-phone-number" name="phone-number">
+        </div>
+        <div>
+          <label for="update-tag"  name="update-tag">Tag:</label>
+          <select id="update-tag">
+            <option>None</option>
+            <option>Marketing</option>
+            <option>Engineering</option>
+            <option>Farming</option>
+            <option>Family</option>
+            <option>Friends</option>
+            <option>Yoga</option>
+          </select>
+        </div>
+        <div>
+          <input type="submit" value="Update Contact">
+        </div>
+      </form>
+    </div>
+     
+    <div id="contacts" hidden>
+    </div>
+    
+    <footer>
+    </footer>
+  </body>
+  
+  <script id="contactTemplate" type="text/x-handlebars">
+    {{#if contacts}}
+      {{#each contacts}}
+      <div class="contact" data-id = "{{id}}">
+        <p>Name:  {{full_name}}</p>
+        <p>Email:  {{email}}</p>
+        <p>Phone Number: {{phone_number}}</p>
+        <p>Tags: {{tags}}</p>
+        <button>Delete</button>
+        <button>Edit</button>
+      </div>
+      {{/each}}
+    {{else}}
+      <div id="empty-contacts">
+        <h1>No Contacts<h2>
+      <div>
+    {{/if}}
+    
+  </script>
+</html>
